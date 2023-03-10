@@ -25,13 +25,18 @@ export default function CharacterThumbnail({ character }: Props) {
       style={{
         backgroundImage: `linear-gradient(to bottom right, ${bgFrom}, ${bgVia}, ${bgTo}`,
       }}
-      className="border-2 mx-1 mr-4 md:mx-3 w-[95px] relative lg:w-[120px] rounded-xl shadow-xl overflow-hidden my-5 cursor-pointer"
+      className="mx-1 mr-4 md:mx-3 w-[95px] relative lg:w-[120px] rounded-xl shadow-lg drop-shadow-md shadow-[#323333] overflow-hidden my-5 cursor-pointer "
     >
       <div className="w-full flex flex-col items-center mt-1h-[130px] lg:h-[170px]">
         <div className="h-3/4 flex items-end justify-center">
           <img src={character.iconUrl} alt={character.nameId} />
         </div>
-        <div className="bg-black w-full h-1/4 flex items-center justify-center">
+        <div
+          className="w-full h-1/4 flex items-center justify-center"
+          style={{
+            backgroundColor: "rgb(45 50 90)",
+          }}
+        >
           <p className="text-xs lg:text-sm xl:text-sm text-center font-semibold leading-3 mt-1 flex items-center h-full">
             {character.name}
           </p>
