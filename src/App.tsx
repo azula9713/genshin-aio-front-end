@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Character from "./pages/Character/Character";
 import Home from "./pages/Home/Home";
 
 export default function App() {
@@ -23,6 +24,16 @@ export default function App() {
     {
       path: "/user",
       element: <div>User</div>,
+    },
+    {
+      path: "character",
+      // loader:
+      children: [
+        {
+          path: ":characterName",
+          element: <Character />,
+        },
+      ],
     },
   ]);
 

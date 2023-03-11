@@ -3,13 +3,11 @@ interface ICharacter {
   enkaId: string;
   name: string;
   nameId: string;
-  description: string;
-  stars: number;
-  rarity: string;
+  rarity: "QUALITY_PURPLE" | "QUALITY_ORANGE" | "QUALITY_ORANGE_SP";
   iconUrl: string;
   element: {
     id: string;
-    name: string;
+    name: "Anemo" | "Geo" | "Electro" | "Dendro" | "Hydro" | "Pyro" | "Cryo";
   };
 }
 

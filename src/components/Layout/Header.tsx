@@ -14,7 +14,7 @@ export default function Header() {
   };
 
   return (
-    <div className="h-16 max-h-16 flex items-center justify-between">
+    <div className="h-16 max-h-16 flex items-center justify-between shadow-lg">
       <div className="h-16 w-12 flex items-center justify-start">
         <Lottie options={defaultOptions} height={50} width={50} />
       </div>

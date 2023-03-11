@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ICharacter from "../../interfaces/CharacterInterface";
-import { fetchAllCharacters } from "../../services/characters/characters";
+import { fetchAllCharacters } from "../../services/enka/characters";
 import CharacterThumbnail from "./CharacterThumbnail";
 
 export default function AllCharacterShowcase() {
