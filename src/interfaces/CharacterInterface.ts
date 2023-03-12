@@ -1,4 +1,4 @@
-interface ICharacter {
+export interface ICharacter {
   id: string;
   enkaId: string;
   name: string;
@@ -11,4 +11,31 @@ interface ICharacter {
   };
 }
 
-export default ICharacter;
+export interface ICharacterData extends ICharacter {
+  description: string;
+  splashImageUrl: string;
+  stars: number;
+  costumes: {
+    id: number;
+    name: string;
+    description: string;
+    icon?: string;
+  }[];
+  skills: {
+    id: number;
+    name: string;
+    description: string;
+    icon: string;
+  }[];
+  passiveTalents: {
+    id: number;
+    name: string;
+    description: string;
+    icon: string;
+  }[];
+  constellations: {
+    id: number;
+    name: string;
+    description: string;
+  }[];
+}

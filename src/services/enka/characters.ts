@@ -6,4 +6,15 @@ async function fetchAllCharacters() {
   return result.data;
 }
 
-export { fetchAllCharacters };
+async function fetchEnkaCharacterById(
+  enkaId: string,
+  enkaSkillDepotId: string
+) {
+  const result = await instance.get("/api/v1/enkaCharacters/CharacterData", {
+    params: { enkaId, enkaSkillDepotId },
+  });
+
+  return result.data;
+}
+
+export { fetchAllCharacters, fetchEnkaCharacterById };

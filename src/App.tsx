@@ -1,8 +1,12 @@
+import { ReactQueryDevtools } from "react-query/devtools";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Character from "./pages/Character/Character";
 import Home from "./pages/Home/Home";
+import { RecoilRoot } from "recoil";
 
 export default function App() {
+  const queryClient = new QueryClient();
   // Check for user preference and apply corresponding theme
   if (
     localStorage.theme === "dark" ||
@@ -37,5 +41,12 @@ export default function App() {
     },
   ]);
 
-  return <RouterProvider router={router} fallbackElement={<div>Uh No</div>} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RecoilRoot>
+        <RouterProvider router={router} fallbackElement={<div>Uh No</div>} />
+      </RecoilRoot>
+      <ReactQueryDevtools />
+    </QueryClientProvider>
+  );
 }

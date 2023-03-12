@@ -5,7 +5,7 @@ type Props = {
 };
 
 const Container: React.FC<Props> = ({ children }) => (
-  <div className="bg-white dark:bg-gray-900 dark:text-white overflow-x-hidden px-4 md:px-12">
+  <div className="bg-white dark:bg-gray-900 dark:text-white overflow-x-hidden w-screen">
     <Header />
     {children}
   </div>
