@@ -7,25 +7,16 @@ type Props = {
   character: ICharacter;
 };
 
-interface CharacterRarity {
-  QUALITY_ORANGE_SP: "QUALITY_ORANGE_SP";
-  QUALITY_ORANGE: "QUALITY_ORANGE";
-  QUALITY_PURPLE: "QUALITY_PURPLE";
-}
-
 export default function CharacterThumbnail({ character }: Props) {
-  const { fromColor: bgFrom } =
-    colorFilter[character.rarity as keyof CharacterRarity];
-  const { viaColor: bgVia } =
-    colorFilter[character.rarity as keyof CharacterRarity];
-  const { toColor: bgTo } =
-    colorFilter[character.rarity as keyof CharacterRarity];
+  const { fromColor: bgFrom } = colorFilter[character.rarity];
+  const { viaColor: bgVia } = colorFilter[character.rarity];
+  const { toColor: bgTo } = colorFilter[character.rarity];
 
   return (
     <Link to={`/character/${character.id}`}>
       <div
         style={{ backgroundColor: bgColorFilter[character.rarity] }}
-        className="mx-1 mr-4 md:mx-3 w-[95px] relative lg:w-[120px] rounded-xl shadow-lg drop-shadow-md shadow-[#323333] overflow-hidden my-5 cursor-pointer "
+        className="mx-3 w-[95px] relative lg:w-[120px] rounded-xl shadow-lg drop-shadow-md shadow-[#323333] overflow-hidden mb-5 cursor-pointer "
       >
         <div className="w-full flex flex-col items-center mt-1 h-[130px] lg:h-[170px]">
           <div className="h-3/4 flex items-end justify-center">
@@ -46,7 +37,7 @@ export default function CharacterThumbnail({ character }: Props) {
           <img
             className="w-4 h-4 lg:w-5 lg:h-5"
             src={elementalImageFilter[character.element.name]}
-            alt="Dendro"
+            alt={elementalImageFilter[character.element.name]}
           />
         </div>
       </div>

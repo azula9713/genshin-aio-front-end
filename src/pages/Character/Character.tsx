@@ -15,6 +15,7 @@ import AnemoBG from "../../assets/images/bgs/constellation_template__anemo.jpg";
 import GeoBG from "../../assets/images/bgs/constellation_template__geo.jpg";
 import DendroBG from "../../assets/images/bgs/constellation_template__dendro.jpg";
 import RarityStars from "./RarityStars";
+import Overview from "./Overview";
 
 export default function Character() {
   const location = useLocation();
@@ -75,7 +76,7 @@ export default function Character() {
 
   return (
     <Container>
-      <div className="min-h-[calc(100vh-4rem)] pt-2 px-2 md:hidden">
+      <div className="pt-2 px-2 md:hidden">
         <div
           className="h-full w-full rounded-lg"
           style={{
@@ -107,7 +108,12 @@ export default function Character() {
             </div>
           </div>
         </div>
-        <div className=""></div>
+        <Overview
+          element={characterData.element?.name}
+          weapon={characterData.weapon}
+          affiliation={characterData.affiliation}
+          constellation={characterData.constellation}
+        />
       </div>
     </Container>
   );

@@ -6,7 +6,18 @@ import HydroSVG from "../assets/images/elements/Element_Hydro.svg";
 import PyroSVG from "../assets/images/elements/Element_Pyro.svg";
 import CryoSVG from "../assets/images/elements/Element_Cryo.svg";
 
-const elementalImageFilter = {
+interface ElementalImageFilter {
+  [key: string]: string;
+  Anemo: string;
+  Electro: string;
+  Geo: string;
+  Dendro: string;
+  Hydro: string;
+  Pyro: string;
+  Cryo: string;
+}
+
+const elementalImageFilter: ElementalImageFilter = {
   Anemo: AnemoSVG,
   Electro: ElectroSVG,
   Geo: GeoSVG,

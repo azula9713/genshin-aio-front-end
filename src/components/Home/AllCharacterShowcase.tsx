@@ -1,13 +1,15 @@
 import { useEffect } from "react";
 import { useQuery } from "react-query";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { allEnkaCharactersAtom } from "../../atoms/EnkaCharacters.atom";
+import { selectedElementAtom } from "../../atoms/SelectedItems.atoms";
 import { ICharacter } from "../../interfaces/CharacterInterface";
 import { fetchAllCharacters } from "../../services/enka/characters";
 import CharacterThumbnail from "./CharacterThumbnail";
 
 export default function AllCharacterShowcase() {
   const [characters, setCharacters] = useRecoilState(allEnkaCharactersAtom);
+  const selectedElement = useRecoilValue(selectedElementAtom);
 
   const { isError, isLoading, data } = useQuery(
     "fetchAllEnkaCharacters",
@@ -35,14 +37,24 @@ export default function AllCharacterShowcase() {
       <div className="flex flex-wrap mt-2 items-center justify-start">
         {characters
           .filter((character) => {
-            if (character.nameId === "PlayerGirl") {
-              return ["Geo", "Dendro", "Pyro"].includes(character.element.name);
-            } else if (character.nameId === "PlayerBoy") {
-              return ["Anemo", "Electro", "Hydro", "Cryo"].includes(
-                character.element.name
-              );
+            if (
+              selectedElement === character.element.name ||
+              selectedElement === "all"
+            ) {
+              if (character.nameId === "PlayerGirl") {
+                return ["Geo", "Dendro", "Pyro"].includes(
+                  character.element.name
+                );
+              } else if (character.nameId === "PlayerBoy") {
+                return ["Anemo", "Electro", "Hydro", "Cryo"].includes(
+                  character.element.name
+                );
+              }
+
+              return true;
             }
-            return true;
+
+            return false;
           })
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((character: ICharacter) => (
